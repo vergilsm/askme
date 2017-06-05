@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   validates :email, :username, presence:   true
   validates :email, :username, uniqueness: true
+  validates :username, length: { maximum: 40}
+  validates_format_of :email, :with => /.+@.+\..+/i
 
   attr_accessor :password
 
