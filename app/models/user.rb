@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :questions
 
+  before_validation { self.username = username.downcase }
   validates :email, :username, presence:   true
   validates :email, :username, uniqueness: true
   validates :username, length: { maximum: 40}
