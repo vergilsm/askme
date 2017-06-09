@@ -1,17 +1,15 @@
 require 'openssl'
 
 class User < ActiveRecord::Base
-
   # параметры работы модуля шифрования паролей
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
 
   has_many :questions
 
-  before_validation { self.username = username.downcase }
   validates :email, :username, presence:   true
   validates :email, :username, uniqueness: true
-  validates :username, length: { maximum: 40}
+  validates :username, length: {maximum: 40}
   validates_format_of :email, :with => /.+@.+\..+/i
 
   attr_accessor :password
@@ -19,7 +17,12 @@ class User < ActiveRecord::Base
   validates_presence_of :password, on: :create
   validates_confirmation_of :password
 
+  before_validation :username_downcase
   before_save :encrypt_password
+
+  def username_downcase
+    self.username.downcase!
+  end
 
   def encrypt_password
     if self.password.present?
