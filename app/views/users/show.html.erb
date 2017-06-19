@@ -18,6 +18,12 @@
   </div>
 </div>
 
+<div class='buffer-top question column-1-4'>
+  <h1 class=" title-small">У вас <%= @questions.count %>
+  <%= count_questions(@questions) %>
+  </h1>
+</div>
+
 <%#Блок с формой для задавания пользователю вопроса%>
 <div class="user-question-form-div column-1-4 column-1-4-right" id='ask-form'>
   <div class="user-question-form buffer-both">
@@ -59,3 +65,4 @@
     </div>
   </div>
 </div>
+
