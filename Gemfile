@@ -6,15 +6,19 @@ gem 'rails', '4.2.6'
 
 gem 'rails-i18n'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3.13'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+group :production do
+  gem 'pg'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 group :development do
