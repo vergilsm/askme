@@ -6,6 +6,8 @@ gem 'rails', '4.2.6'
 
 gem 'rails-i18n'
 
+gem 'uglifier'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
