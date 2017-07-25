@@ -45,6 +45,15 @@
         <%= f.password_field :password_confirmation, class: 'form-text-field' %>
       </div>
 
+      <div class="buffer-top-large buffer-bottom">
+        Изменить цвет фона, где находится аватар.
+      </div>
+
+      <div class="form-field">
+        <%= f.label 'Цвет фона', class: 'form-label' %>
+        <%= color_field :user, :background_color %>
+      </div>
+
       <div class="form-action buffer-top">
         <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
       </div>

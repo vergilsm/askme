@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   validates :email, :username, presence:   true
   validates :email, :username, uniqueness: true
   validates :username, length: {maximum: 40}
-  validates_format_of :email, :with => /.+@.+\..+/i
+  validates_format_of :email, with: /.+@.+\..+/i
+  validates_format_of :background_color, with: /\A#?(?:[a-fA-F0-9]{3}){1,2}\z/i
 
   attr_accessor :password
 
