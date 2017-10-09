@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :questions, expect: [:show, :new, :index]
+  resources :tags
 
   #  синонимы путей - в дополнение к созданным в ресурсах выше
   get 'sign_up' => 'users#new'

@@ -15,7 +15,7 @@
     </div>
 
     <!-- Автор вопроса пользователю -->
-    <div>
+    <div class="question-date">
       <% if question.author.present? %>
         Вопрос задал: <%= link_to "@#{question.author.username}",
                      user_path(question.author) %>
