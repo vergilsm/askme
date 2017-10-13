@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 20171002122925) do
   add_index "questions_tags", ["tag_id"], name: "index_questions_tags_on_tag_id"
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name"
+    t.string   "tagname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["tagname"], name: "index_tags_on_tagname", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

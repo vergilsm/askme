@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :load_question, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user, except: [:create]
+  before_action :authorize_user, except: [:create, :hashtags]
 
   def edit
   end
@@ -23,6 +23,11 @@ class QuestionsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def hashtags
+    tag = Tag.find_by(tagname: params[:tagname])
+    @questions = tag.questions
   end
 
   # DELETE /questions/1
