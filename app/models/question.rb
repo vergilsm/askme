@@ -8,6 +8,7 @@ class Question < ActiveRecord::Base
 
   before_create do
     hashtags = self.text.scan(/#\w+/)
+    hashtags << self.answer.scan(/#\w+/) if answer.present?
     hashtags.uniq.map do |hashtag|
       tag = Tag.find_or_create_by(tagname: hashtag.downcase.delete('#'))
       self.tags << tag
@@ -17,6 +18,7 @@ class Question < ActiveRecord::Base
   before_update do
     self.tags.clear
     hashtags = self.text.scan(/#\w+/)
+    hashtags << self.answer.scan(/#\w+/) if answer.present?
     hashtags.uniq.map do |hashtag|
       tag = Tag.find_or_create_by(tagname: hashtag.downcase.delete('#'))
       self.tags << tag

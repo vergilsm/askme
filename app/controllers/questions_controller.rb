@@ -26,8 +26,9 @@ class QuestionsController < ApplicationController
   end
 
   def hashtags
-    tag = Tag.find_by(tagname: params[:tagname])
-    @questions = tag.questions
+    @tag = Tag.find_by!(tagname: params[:name])
+    @questions = @tag.questions
+    @answers = Question.where(answer: @tag)
   end
 
   # DELETE /questions/1
