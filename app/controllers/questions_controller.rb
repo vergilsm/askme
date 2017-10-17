@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def hashtags
-    @tag = Tag.find_by!(tagname: params[:name])
+    @tag = Tag.find_by!(name: params[:name])
     @questions = @tag.questions
   end
 

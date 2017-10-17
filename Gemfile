@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 
+# Use to view logs on the heroku
 gem 'rails_12factor'
 
 gem 'rails-i18n'
