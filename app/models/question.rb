@@ -6,12 +6,12 @@ class Question < ActiveRecord::Base
   validates :text, length: {maximum: 255}
   validates :text, :user, presence: true
 
-  before_create do
+  before_save do
     self.tags.clear
     hashtags = self.text.scan(/#\w+/)
-    hashtags << self.answer.scan(/#\w+/) if answer.present?
+    hashtags << self.answer.scan(/#\w+/) if self.answer.present?
     hashtags.uniq.map do |hashtag|
-      tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
+      tag = Tag.find_or_create_by(name: hashtag.to_s.downcase.delete('#[]"'))
       self.tags << tag
     end
   end
