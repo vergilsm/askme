@@ -8,8 +8,8 @@ class Question < ActiveRecord::Base
 
   before_save do
     self.tags.clear
-    hashtags = self.text.scan(/#\w+/)
-    hashtags << self.answer.scan(/#\w+/) if self.answer.present?
+    hashtags = self.text.scan(/#[\u0400-\u04FFa-z]*/)
+    hashtags << self.answer.scan(/#[\u0400-\u04FF]*/) if self.answer.present?
     hashtags.uniq.map do |hashtag|
       tag = Tag.find_or_create_by(name: hashtag.to_s.downcase.delete('#[]"'))
       self.tags << tag
