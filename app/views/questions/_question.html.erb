@@ -10,7 +10,7 @@
 
 <div class="question">
   <div class="question-content">
-    <div class="question-text text-lead">
+    <div class="question-text text-lead tag-view">
       <%= render_with_hashtags(question.text) %>
     </div>
 
@@ -26,7 +26,7 @@
 
     <!-- Если вопрос имеет ответ, показать его -->
     <% if question.answer.present? %>
-        <div class="question-answer text-lead">
+        <div class="question-answer text-lead tag-view">
           <%= render_with_hashtags(question.answer) %>
         </div>
     <% end %>

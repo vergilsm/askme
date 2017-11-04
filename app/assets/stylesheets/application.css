@@ -23,3 +23,8 @@
 
  *= require_self
  */
+
+ /*Tag*/
+.tag-view a {
+  color: blue;
+}
