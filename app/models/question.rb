@@ -7,9 +7,10 @@ class Question < ActiveRecord::Base
   validates :text, :user, presence: true
 
   before_save do
+    regex = QuestionsController::TAG_REGEX
     self.tags.clear
-    hashtags = self.text.scan(/#[\u0400-\u04FFa-z]*/)
-    hashtags << self.answer.scan(/#[\u0400-\u04FFa-z]*/) if self.answer.present?
+    hashtags = self.text.scan(regex)
+    hashtags << self.answer.scan(regex) if self.answer.present?
     hashtags.uniq.map do |hashtag|
       tag = Tag.find_or_create_by(name: hashtag.to_s.downcase.delete('#[]"'))
       self.tags << tag
