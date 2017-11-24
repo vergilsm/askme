@@ -6,6 +6,9 @@ gem 'rails', '4.2.6'
 # Use to view logs on the heroku
 gem 'rails_12factor'
 
+# https://github.com/ambethia/recaptch
+gem "recaptcha", require: "recaptcha/rails"
+
 gem 'rails-i18n'
 
 gem 'uglifier'
